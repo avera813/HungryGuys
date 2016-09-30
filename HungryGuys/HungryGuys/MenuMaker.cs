@@ -8,9 +8,9 @@ namespace HungryGuys
 {
     class MenuMaker
     {
-        public Random Randomizer;
+        public Random Randomizer = new Random();
 
-        string[] Meats = { "Roast beef", "Salami", "Turkey", "Ham", "Pastrami" };
+        string[] Meats = { "roast beef", "salami", "turkey", "ham", "pastrami" };
         string[] Condiments = { "yellow mustard", "brown mustard", "honey mustard", "mayo", "relish", "french dressing" };
         string[] Breads = { "rye", "white", "wheat", "pumpernickel", "italian bread", "a roll" };
 
@@ -19,7 +19,7 @@ namespace HungryGuys
             string randomMeat = Meats[Randomizer.Next(Meats.Length)];
             string randomCondiment = Condiments[Randomizer.Next(Condiments.Length)];
             string randomBread = Breads[Randomizer.Next(Breads.Length)];
-            return randomMeat + " with " + randomCondiment + " on " + randomBread;
+            return "a " + randomMeat + " with " + randomCondiment + " on " + randomBread;
         }
     }
 }
