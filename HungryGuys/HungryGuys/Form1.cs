@@ -16,6 +16,9 @@ namespace HungryGuys
         Guy bob;
         MenuMaker menu;
 
+        System.Media.SoundPlayer eatingSound = new System.Media.SoundPlayer(@"..\..\Resources\eating.wav");
+        System.Media.SoundPlayer dingSound = new System.Media.SoundPlayer(@"..\..\Resources\ding.wav");
+
         public Form1()
         {
             InitializeComponent();
@@ -40,35 +43,41 @@ namespace HungryGuys
         private void makeJoeSandwich_Click(object sender, EventArgs e)
         {
             joe.ReceiveSandwich(menu.GetMenuItem());
+            dingSound.Play();
             UpdateForm();
         }
 
         private void makeBobSandwich_Click(object sender, EventArgs e)
         {
             bob.ReceiveSandwich(menu.GetMenuItem());
+            dingSound.Play();
             UpdateForm();
         }
 
         private void bobEatSandwich1_Click(object sender, EventArgs e)
         {
+            eatingSound.Play();
             bob.EatSandwich(0);
             UpdateForm();
         }
 
         private void bobEatSandwich2_Click(object sender, EventArgs e)
         {
+            eatingSound.Play();
             bob.EatSandwich(1);
             UpdateForm();
         }
 
         private void joeEatSandwich1_Click(object sender, EventArgs e)
         {
+            eatingSound.Play();
             joe.EatSandwich(0);
             UpdateForm();
         }
 
         private void joeEatSandwich2_Click(object sender, EventArgs e)
         {
+            eatingSound.Play();
             joe.EatSandwich(1);
             UpdateForm();
         }
