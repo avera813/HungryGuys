@@ -11,6 +11,8 @@ namespace HungryGuys
         private string name;
         private string[] plate = new string[0];
 
+        // Return text string for items on plate or 'an empty plate'
+        // Setting as readonly property
         public string Plate
         {
             get
@@ -32,12 +34,14 @@ namespace HungryGuys
             }
         }
 
+        // Set and get name of Guy object
         public string Name
         {
             set { name = value; }
             get { return this.name; }
         }
 
+        // Add new sandwich to array
         public void ReceiveSandwich(string sandwich)
         {
             if (!String.IsNullOrEmpty(sandwich))
@@ -52,6 +56,7 @@ namespace HungryGuys
             }
         }
 
+        // Remove sandwich based on index
         public void EatSandwich(int index)
         {
             if (plate.Length > index && index > -1)
@@ -70,6 +75,7 @@ namespace HungryGuys
             }
         }
 
+        // Return number of items on plate
         public int NumberOfPlateItems()
         {
             return plate.Length;
