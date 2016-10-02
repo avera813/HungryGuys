@@ -9,7 +9,7 @@ namespace HungryGuys
     class Guy
     {
         private string name;
-        private string[] plate = new string[0];
+        private List<FoodItem> plate = new List<FoodItem>();
 
         // Return text string for items on plate or 'an empty plate'
         // Setting as readonly property
@@ -17,16 +17,16 @@ namespace HungryGuys
         {
             get
             {
-                if (plate != null && plate.Length > 0)
+                if (plate != null && plate.Count() > 0)
                 {
                     string itemsInPlate = "";
-                    for (int i = 0; i < plate.Length; i++)
+                    for (int i = 0; i < plate.Count(); i++)
                     {
                         if (i != 0)
                         {
                             itemsInPlate += " and ";
                         }
-                        itemsInPlate += plate[i];
+                        itemsInPlate += plate.ElementAt(i).Description;
                     }
                     return itemsInPlate;
                 }
@@ -46,39 +46,23 @@ namespace HungryGuys
         {
             if (!String.IsNullOrEmpty(sandwich))
             {
-                string[] tempPlate = new String[plate.Length + 1];
-                for (int i = 0; i < plate.Length; ++i)
-                {
-                    tempPlate[i] = plate[i];
-                }
-                tempPlate[tempPlate.Length - 1] = sandwich;
-                plate = tempPlate;
+                plate.Add(new FoodItem { Description = sandwich });
             }
         }
 
         // Remove sandwich based on index
         public void EatSandwich(int index)
         {
-            if (plate.Length > index && index > -1)
+            if (plate.Count() > index && index > -1)
             {
-                string[] revisedPlate = new string[plate.Length - 1];
-                int i = 0;
-                for (int j = 0; j < plate.Length; ++j)
-                {
-                    if (j != index)
-                    {
-                        revisedPlate[i] = plate[j];
-                        i++;
-                    }
-                }
-                plate = revisedPlate;
+                plate.RemoveAt(index);
             }
         }
 
         // Return number of items on plate
         public int NumberOfPlateItems()
         {
-            return plate.Length;
+            return plate.Count();
         }
     }
 }
